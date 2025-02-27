@@ -117,14 +117,10 @@ h1 {
     width: 65px; /* Bigger size for Enter and Backspace */
 }
 .key.tried {
-    background-color: dark grey;
+    background-color: darkgrey;
 }
 #count{
     display: inline-block;
-}
-.flip {
-    transform: rotateY(180deg);
-    transition: transform 0.3s;
 }
 
 @media (max-width: 1200px) {
@@ -201,7 +197,7 @@ h1 {
         background-color: black;
         color: white;
         font-size: 0.9rem;
-        position: absolute;
+        position: relative;
         top: 5px;
         right: 10px;
         margin-right: 2px;
