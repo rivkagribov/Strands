@@ -12,10 +12,13 @@ function generateGrid() {
     );
 }
 
-// Display the grid in HTML
+// Display the grid in the HTML
 function displayGrid() {
     const gridContainer = document.getElementById("grid");
     gridContainer.innerHTML = "";
+    gridContainer.style.gridTemplateColumns = `repeat(${gridCols}, 40px)`; // Matches .word-grid CSS
+    gridContainer.style.gridGap = "5px";
+
     grid.forEach((row, rIdx) => {
         row.forEach((letter, cIdx) => {
             let cell = document.createElement("div");
