@@ -23,6 +23,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 const cell = document.createElement("div");
                 cell.classList.add("grid-cell");
                 cell.textContent = letter;
+                cell.addEventListener("click", () => {
+                    cell.classList.toggle("selected");
+                });
                 gridContainer.appendChild(cell);
             });
         });
