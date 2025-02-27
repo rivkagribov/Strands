@@ -29,7 +29,16 @@ body, html {
   grid-gap: 5px;
   justify-content: center;
 }
-
+.grid-cell {
+    width: 50px; /* Adjust as needed */
+    height: 50px; /* Adjust as needed */
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px; /* Match the height for centering text */
+    border: 1px solid black; /* Optional: for visible grid lines */
+    font-size: 18px; /* Adjust font size as needed */
+}
 .cell {
   width: 40px;
   height: 40px;
