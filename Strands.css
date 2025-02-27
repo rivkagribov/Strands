@@ -29,6 +29,9 @@ body, html {
   grid-gap: 5px;
   justify-content: center;
 }
+.grid-cell.selected {
+    background-color: yellow;
+}
 .grid-cell {
     width: 50px; /* Adjust as needed */
     height: 50px; /* Adjust as needed */
