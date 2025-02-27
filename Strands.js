@@ -1,61 +1,41 @@
-const words = ["SILLY", "HEART", "CUPID", "ROSES", "STINK", "SWEET", "DUCKS", "QUACK", "LATKE", "AMOUR", "LUCKY", "FLIRT", "FRUIT"];
-const gridRows = 6, gridCols = 8;
-let grid = [];
-let selectedWord = "";
-let foundWords = new Set();
-
-// Generate a random letter grid
-function generateGrid() {
-    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    grid = Array.from({ length: gridRows }, () =>
-        Array.from({ length: gridCols }, () => alphabet[Math.floor(Math.random() * alphabet.length)])
-    );
-}
-
-// Display the grid in the HTML
-function displayGrid() {
-    const gridContainer = document.getElementById("grid");
-    gridContainer.innerHTML = "";
-    gridContainer.style.gridTemplateColumns = `repeat(${gridCols}, 40px)`; // Matches .word-grid CSS
-    gridContainer.style.gridGap = "5px";
-
-    grid.forEach((row, rIdx) => {
-        row.forEach((letter, cIdx) => {
-            let cell = document.createElement("div");
-            cell.textContent = letter;
-            cell.className = "cell";
-            cell.dataset.row = rIdx;
-            cell.dataset.col = cIdx;
-            cell.addEventListener("click", () => selectLetter(rIdx, cIdx, cell));
-            gridContainer.appendChild(cell);
+document.addEventListener("DOMContentLoaded", function () {
+    const gridContainer = document.getElementById("grid-container");
+    const hintElement = document.getElementById("hint");
+    
+    // Sample word grid (adjust as needed)
+    const words = [
+        ["C", "A", "T", "S"],
+        ["D", "O", "G", "S"],
+        ["F", "I", "S", "H"],
+        ["B", "I", "R", "D"]
+    ];
+    
+    const hint = "Find the animals";
+    
+    function createGrid() {
+        if (!gridContainer) {
+            console.error("Grid container not found!");
+            return;
+        }
+        gridContainer.innerHTML = "";
+        words.forEach(row => {
+            row.forEach(letter => {
+                const cell = document.createElement("div");
+                cell.classList.add("grid-cell");
+                cell.textContent = letter;
+                gridContainer.appendChild(cell);
+            });
         });
-    });
-}
-
-// Handle letter selection
-function selectLetter(row, col, cell) {
-    if (cell.classList.contains("selected")) return;
-    selectedWord += grid[row][col];
-    cell.classList.add("selected");
-
-    if (words.includes(selectedWord)) {
-        foundWords.add(selectedWord);
-        document.getElementById("wordsFound").textContent = "Words Found: " + Array.from(foundWords).join(", ");
-        document.querySelectorAll(".selected").forEach(el => el.classList.add("found"));
-        selectedWord = "";
     }
-}
-
-// Reset the game
-function resetGame() {
-    foundWords.clear();
-    selectedWord = "";
-    generateGrid();
-    displayGrid();
-    document.getElementById("wordsFound").textContent = "Words Found: ";
-}
-
-// Initialize game
-document.getElementById("resetButton").addEventListener("click", resetGame);
-generateGrid();
-displayGrid();
+    
+    function displayHint() {
+        if (!hintElement) {
+            console.error("Hint element not found!");
+            return;
+        }
+        hintElement.textContent = hint;
+    }
+    
+    createGrid();
+    displayHint();
+});
