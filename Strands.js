@@ -14,6 +14,8 @@ document.addEventListener("DOMContentLoaded", function () {
     //const promt = "TODAY'S THEME";
     const hint = "ANIMALS";
     //want a box around it 
+    let selectedCells = [];
+    
     function createGrid() {
         if (!gridContainer) {
             console.error("Grid container not found!");
@@ -27,15 +29,32 @@ document.addEventListener("DOMContentLoaded", function () {
                 const cell = document.createElement("div");
                 cell.classList.add("grid-cell");
                 cell.textContent = letter;
-                cell.addEventListener("click", () => {
-                    cell.classList.toggle("selected");
+
+        cell.addEventListener("click", () => {
+             if (!cell.classList.contains("selected")) {
+             cell.classList.add("selected");
+             selectedCells.push(cell); // Add to selected group
+             } else {
+                    cell.classList.remove("selected");
+                    selectedCells = selectedCells.filter(c => c !== cell); // Remove from group
+             }
+
+                updateSelection(); // Update display
+            }); 
+                 //   cell.addEventListener("click", () => {  REMOVED
+                 //  cell.classList.toggle("selected");       REMOVED
                 });
                 rowContainer.appendChild(cell);
               });
              gridContainer.appendChild(rowContainer);
         });
     }
-    
+    function updateSelection() {
+    selectedCells.forEach((cell, index) => {
+        cell.style.backgroundColor = "lightblue"; 
+        cell.style.borderColor = "darkblue"; //remove?
+        });
+    }
     //const count = enternumber "of " enternumbertotal"theme words found." //bottom of the page prompt 
     //const hint = "ANIMALS"; // button for hint
     
