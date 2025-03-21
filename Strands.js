@@ -41,13 +41,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 updateSelection(); // Update display
             }); 
-                 //   cell.addEventListener("click", () => {  REMOVED
-                 //  cell.classList.toggle("selected");       REMOVED
-                });
                 rowContainer.appendChild(cell);
-              });
-             gridContainer.appendChild(rowContainer);
-        });
+            });
     }
     function updateSelection() {
     selectedCells.forEach((cell, index) => {
