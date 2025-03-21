@@ -8,9 +8,10 @@ document.addEventListener("DOMContentLoaded", function () {
         ["D", "O", "G", "S"],
         ["F", "I", "S", "H"],
         ["B", "I", "R", "D"]
+        ["P", "U", "M", "A"]      
     ];
     
-    const hint = "Find the animals";
+    const hint = "Hint: Find the animals";
     
     function createGrid() {
         if (!gridContainer) {
