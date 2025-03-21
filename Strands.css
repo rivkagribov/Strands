@@ -205,6 +205,11 @@ h1 {
     .navbar h1{
         font-size: 1.5rem;
     }
+    #hint {
+    color: white; 
+    font-size: 18px; 
+    text-align: center; 
+   }
     #resetButton,#heartButton {
         background-color: black;
         color: white;
