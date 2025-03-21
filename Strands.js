@@ -11,8 +11,9 @@ document.addEventListener("DOMContentLoaded", function () {
         ["P", "U", "M", "A"]      
     ];
     
-    const hint = "Hint: Find the animals";
-    
+    //const promt = "TODAY'S THEME";
+    const hint = "ANIMALS";
+    //want a box around it 
     function createGrid() {
         if (!gridContainer) {
             console.error("Grid container not found!");
@@ -34,6 +35,9 @@ document.addEventListener("DOMContentLoaded", function () {
              gridContainer.appendChild(rowContainer);
         });
     }
+    
+    //const count = enternumber "of " enternumbertotal"theme words found." //bottom of the page prompt 
+    //const hint = "ANIMALS"; // button for hint
     
     function displayHint() {
         if (!hintElement) {
