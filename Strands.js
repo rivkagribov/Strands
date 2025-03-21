@@ -20,6 +20,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         gridContainer.innerHTML = "";
         words.forEach(row => {
+            const rowContainer = document.createElement("div"); 
+            rowContainer.classList.add("grid-row");
             row.forEach(letter => {
                 const cell = document.createElement("div");
                 cell.classList.add("grid-cell");
@@ -27,8 +29,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 cell.addEventListener("click", () => {
                     cell.classList.toggle("selected");
                 });
-                gridContainer.appendChild(cell);
-            });
+                rowContainer.appendChild)cell);
+              });
+             gridContainer.appendChild(cell);
         });
     }
     
