@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
         ["C", "A", "T", "S"],
         ["D", "O", "G", "S"],
         ["F", "I", "S", "H"],
-        ["B", "I", "R", "D"]
+        ["B", "I", "R", "D"],
         ["P", "U", "M", "A"]      
     ];
     
@@ -29,9 +29,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 cell.addEventListener("click", () => {
                     cell.classList.toggle("selected");
                 });
-                rowContainer.appendChild)cell);
+                rowContainer.appendChild(cell);
               });
-             gridContainer.appendChild(cell);
+             gridContainer.appendChild(rowContainer);
         });
     }
     
