@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const gridContainer = document.getElementById("grid-container");
     const hintElement = document.getElementById("hint");
     
-    // Sample word grid (adjust as needed)
     const words = [
         ["C", "A", "T", "S"],
         ["D", "O", "G", "S"],
@@ -11,9 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
         ["P", "U", "M", "A"]      
     ];
     
-    //const promt = "TODAY'S THEME";
-    const hint = "ANIMALS";
-    //want a box around it 
+    const hint = "ANIMALS"; //want a box around it 
     let selectedCells = [];
     
     function createGrid() {
@@ -43,6 +40,8 @@ document.addEventListener("DOMContentLoaded", function () {
             }); 
                 rowContainer.appendChild(cell);
             });
+               gridContainer.appendChild(rowContainer);
+        });
     }
     function updateSelection() {
     selectedCells.forEach((cell, index) => {
