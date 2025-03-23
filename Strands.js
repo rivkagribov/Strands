@@ -20,59 +20,90 @@ document.addEventListener("DOMContentLoaded", function () {
     let foundWords = 0;
     let selectedCells = [];
     
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("class", "grid-lines");
+    gridContainer.appendChild(svg);
+    
     function createGrid() {
         if (!gridContainer) {
             console.error("Grid container not found!");
             return;
         }
         gridContainer.innerHTML = "";
-        words.forEach(row => {
+        gridContainer.appendChild(svg);
+        
+        words.forEach(row, rowIndex) => {
             const rowContainer = document.createElement("div"); 
             rowContainer.classList.add("grid-row");
-            row.forEach(letter => {
+            row.forEach((letter, colIndex) => {
                 const cell = document.createElement("div");
                 cell.classList.add("grid-cell");
                 cell.textContent = letter;
+                cell.dataset.row = rowIndex;
+                cell.dataset.rol = colIndex;
 
                 cell.addEventListener("click", () => {
                  if (!cell.classList.contains("selected")) {
                  cell.classList.add("selected");
-                 selectedCells.push(cell); // Add to selected group
+                 selectedCells.push(cell);
+                 drawLine();
                  } else {
                     cell.classList.remove("selected");
                     selectedCells = selectedCells.filter(c => c !== cell); 
+                    drawLine();
                 }
-                updateSelection(); 
+               // updateSelection(); 
             }); 
                 rowContainer.appendChild(cell);
             });
            gridContainer.appendChild(rowContainer);
         });
     }
-    function updateSelection() {
-    selectedCells.forEach((cell, index) => {
-        cell.style.backgroundColor = "lightblue"; 
-        });
+    function drawLine() {
+    svg.innerHTML = "";
+
+        if (selectedCells.length > 1) {
+            for (let i = 0; i < selectedCells.length - 1; i++) {
+                const start = selectedCells[i].getBoundingClientRect();
+                const end = selectedCells[i + 1].getBoundingClientRect();
+                const gridRect = gridContainer.getBoundingClientRect();
+
+                // Create a line connecting the centers of two cells
+                const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                line.setAttribute("x1", start.x + start.width / 2 - gridRect.x);
+                line.setAttribute("y1", start.y + start.height / 2 - gridRect.y);
+                line.setAttribute("x2", end.x + end.width / 2 - gridRect.x);
+                line.setAttribute("y2", end.y + end.height / 2 - gridRect.y);
+                line.setAttribute("stroke", "#a5d8ff");
+                line.setAttribute("stroke-width", "4");
+
+                svg.appendChild(line);
+            }
+        }
     }
-    
      function checkWord() {
         const selectedWord = selectedCells.map(cell => cell.textContent).join("");
         if (correctWords.includes(selectedWord)) {
             alert(`Congrats: ${selectedWord} is one of the words!`);
+            // Lock correct word cells
+            selectedCells.forEach(cell => {
+                cell.classList.remove("selected");
+                cell.classList.add("found");
+                cell.style.backgroundColor = "white"; // Change to white background
+                cell.style.pointerEvents = "none"; // Disable further interaction
+            });
             foundWords++;
             foundWordsCounter.textContent = `Words Found: ${foundWords}`;
         } else {
             alert("Not a valid word!");
         }
-        // Clear selected cells
         selectedCells = [];
-        createGrid(); // Optional reset to clear selections
+        drawLine(); 
     }
-    
     function updateAttempts() {
         currentAttempts--;
         attemptCounter.textContent = `${currentAttempts} of 5 theme words found.`;
-
+        
         if (currentAttempts === 0) {
             alert("You've used all your attempts! Game over!");
             gridContainer.style.pointerEvents = "none";
