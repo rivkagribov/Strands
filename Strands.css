@@ -201,9 +201,13 @@ h1 {
         font-size: 1.5rem;
     }
     #hint {
+    border: 2px solid white;
+    padding: 10px;
     color: white; 
     font-size: 18px; 
     text-align: center; 
+    width: fit-content;
+    margin: 20px auto;
    }
     #resetButton,#heartButton {
         background-color: black;
