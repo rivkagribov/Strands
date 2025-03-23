@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
         gridContainer.innerHTML = "";
         gridContainer.appendChild(svg);
         
-        words.forEach(row, rowIndex) => {
+        words.forEach((row, rowIndex) => {
             const rowContainer = document.createElement("div"); 
             rowContainer.classList.add("grid-row");
             row.forEach((letter, colIndex) => {
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 cell.classList.add("grid-cell");
                 cell.textContent = letter;
                 cell.dataset.row = rowIndex;
-                cell.dataset.rol = colIndex;
+                cell.dataset.col = colIndex;
 
                 cell.addEventListener("click", () => {
                  if (!cell.classList.contains("selected")) {
@@ -52,7 +52,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     selectedCells = selectedCells.filter(c => c !== cell); 
                     drawLine();
                 }
-               // updateSelection(); 
             }); 
                 rowContainer.appendChild(cell);
             });
