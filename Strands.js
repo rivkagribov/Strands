@@ -67,14 +67,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 const end = selectedCells[i + 1].getBoundingClientRect();
                 const gridRect = gridContainer.getBoundingClientRect();
 
-                // Create a line connecting the centers of two cells
                 const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-                line.setAttribute("x1", start.x + start.width / 2 - gridRect.x);
-                line.setAttribute("y1", start.y + start.height / 2 - gridRect.y);
-                line.setAttribute("x2", end.x + end.width / 2 - gridRect.x);
-                line.setAttribute("y2", end.y + end.height / 2 - gridRect.y);
+                line.setAttribute("x1", start.left + start.width / 2 - gridRect.left);
+                line.setAttribute("y1", start.top + start.height / 2 - gridRect.top);
+                line.setAttribute("x2", end.left + end.width / 2 - gridRect.left);
+                line.setAttribute("y2", end.top + end.height / 2 - gridRect.top);
                 line.setAttribute("stroke", "#a5d8ff");
-                line.setAttribute("stroke-width", "4");
+                line.setAttribute("stroke-width", "5");
 
                 svg.appendChild(line);
             }
