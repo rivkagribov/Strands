@@ -5,11 +5,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const foundWordsCounter = document.getElementById("found-words-counter");
     
     const words = [
-        ["C", "A", "T", "S"],
-        ["D", "O", "G", "S"],
-        ["F", "I", "S", "H"],
-        ["B", "I", "R", "D"],
-        ["P", "U", "M", "A"]      
+        ["C", "A", "F", "H"],
+        ["T", "S", "S", "B"],
+        ["D", "S", "S", "I"],
+        ["A", "O", "G", "R"],
+        ["M", "U", "P", "D"]      
     ];
 
     const correctWords = ["CATS", "DOGS", "FISH", "BIRD", "PUMA"];
