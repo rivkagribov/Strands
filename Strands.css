@@ -5,7 +5,10 @@ body, html {
 }
 
 .grid-container {
-    position: relative; /* Necessary for proper SVG overlay */
+    position: relative; 
+    display: flex;
+    justifiy-content: center;
+    align-items: center;/* Necessary for proper SVG overlay */
 }
 .container {
     display: flex;
